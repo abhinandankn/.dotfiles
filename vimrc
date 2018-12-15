@@ -84,7 +84,7 @@ set cursorline
 set showmatch
 
 " Set timeouts
-set timeout timeoutlen=2000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=0
 
 " Nerd tree settings
 let NERDTreeMapActivateNode='<right>'
@@ -178,5 +178,4 @@ function! Tab_Or_Complete() abort
     return "\<Tab>"
   endif
 endfunction
-
 

@@ -1,0 +1,7 @@
+[user]
+	name = Abhinandan K N
+	email = abhikn@outlook.com
+[core]
+	editor = vim
+[color]
+	ui = true
