@@ -3,3 +3,5 @@ alias e='exit'
 alias c='clear'
 alias ..='cd ..'
 
+# Applications
+alias spacemacs='emacs -nw'
