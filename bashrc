@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export PATH=$PATH:"/home/falcon/.local/lib/python3.6/site-packages"
 
 # Path to the bash it configuration
 export BASH_IT="/home/falcon/.bash_it"
-export PATH=$PATH:"/home/falcon/.local/lib/python3.6/site-packages"
-
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.

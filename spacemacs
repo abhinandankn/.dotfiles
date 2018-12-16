@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -136,8 +135,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Inconsolata"
-                               :size 22
+   dotspacemacs-default-font '("IBMPlexMono Medium"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -321,7 +320,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq powerline-default-separator 'arrow)
+  (setq powerline-default-separator 'arrow-fade)
 
   (add-hook 'org-mode-hook
             '(lambda ()

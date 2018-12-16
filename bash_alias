@@ -1,5 +1,4 @@
 # Bash aliases 
-alias lla='ls -la .'
 alias e='exit'
 alias c='clear'
 alias ..='cd ..'
