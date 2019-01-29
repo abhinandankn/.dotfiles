@@ -29,17 +29,18 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
+Plugin 'bps/vim-textobj-python'
 Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree' 
 Plugin 'kien/ctrlp.vim'
-
+Plugin 'vim-scripts/restore_view.vim'
 " Python Plugins
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'benmills/vimux'
-Plugin 'maralla/completor.vim'
+" Plugin 'maralla/completor.vim'
 Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
@@ -47,7 +48,6 @@ call vundle#end()
 
 " Look, Feel and Window Management 
 colorscheme Tomorrow-Night-Eighties
-set guifont=Inconsolata\ 18
 
 set wildmenu
 set splitright
@@ -63,13 +63,6 @@ augroup numbertoggle
 augroup END
 
 set ruler
-
-" Auto save folds
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
-augroup END
 
 " set tabs
 set tabstop=4
@@ -120,14 +113,11 @@ nmap <leader>v :vsp<CR>
 nmap <leader>h :sp<CR> 
 
 " Nerd Tree Toggle
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
-
-" Run ALEFix for Python auto formatting
-noremap <F3> :ALEFix<CR>
+nmap <F3> :NERDTreeToggle<CR>
 
 " Compile and Run Code
 nnoremap <F5> :call <SID>compile_and_run()<CR>
+" imap <F5><c-o><F5>
 
 " Debug Python Code, Open PDB
 nnoremap <F7> :
@@ -139,17 +129,10 @@ nmap <Tab> za
 " Toggle Tagbar
 nmap <leader>t :TagbarToggle<CR>
 
-" Use `tab` key to select completions.  Default is arrow keys.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use tab to trigger auto completion.  Default suggests completions as you type.
-inoremap <expr> <Tab> Tab_Or_Complete()
-
 " Python settings
 
 " Code Completor
-let g:completor_python_binary = '/usr/bin/python'
+let g:completor_python_binary = '/usr/bin/python3'
 " ALE Async Linter
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
@@ -162,20 +145,8 @@ function! s:compile_and_run()
     if &filetype == 'c'
         exec ""
     elseif &filetype == 'python'
+        exec "ALEFix"
         exec "VimuxRunCommand(\"clear; python3 \" . bufname(\"%\"))"
     endif
-endfunction
-
-" Auto Completor
-function! Tab_Or_Complete() abort
-    if pumvisible()
-        return "\<C-N>"
-    elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-R>=completor#do('complete')\<CR>"
-    else
-    " If we aren't typing a word and we press `tab` simply do the normal `tab`
-    " action.
-    return "\<Tab>"
-  endif
 endfunction
 
