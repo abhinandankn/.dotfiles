@@ -34,13 +34,16 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree' 
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/restore_view.vim'
+Plugin 'ajh17/VimCompletesMe'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
+
 " Python Plugins
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'benmills/vimux'
-" Plugin 'maralla/completor.vim'
 Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
@@ -56,11 +59,11 @@ set splitbelow
 " set relative line numbers based on mode
 set number relativenumber
  
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
 
 set ruler
 
@@ -92,7 +95,7 @@ if !has('gui_running')
 endif
 
 " search settings
-" set hlsearch
+set hlsearch
 
 " Key Bindings
 
@@ -101,19 +104,19 @@ map s <Nop>
 let mapleader=" "
 
 " Keybinding to Source .vimrc
-nmap <leader>S :edit ~/.vimrc<CR>
-nmap <leader>s :source ~/.vimrc<CR>
+nmap <leader>R :edit ~/.vimrc<CR>
+nmap <leader>S :source ~/.vimrc<CR>
 
 " Quit and Write
 nmap <leader>q :q!<CR>
-nmap <leader>w :w<CR> 
+nmap <leader>s :w<CR> 
 
 " Vertical and Horizontal splits
 nmap <leader>v :vsp<CR> 
 nmap <leader>h :sp<CR> 
 
 " Nerd Tree Toggle
-nmap <F3> :NERDTreeToggle<CR>
+nmap <leader>0 :NERDTreeToggle<CR>
 
 " Compile and Run Code
 nnoremap <F5> :call <SID>compile_and_run()<CR>
@@ -129,7 +132,7 @@ nmap <Tab> za
 " Toggle Tagbar
 nmap <leader>t :TagbarToggle<CR>
 
-" Python settings
+" Python Settings
 
 " Code Completor
 let g:completor_python_binary = '/usr/bin/python3'
@@ -147,6 +150,21 @@ function! s:compile_and_run()
     elseif &filetype == 'python'
         exec "ALEFix"
         exec "VimuxRunCommand(\"clear; python3 \" . bufname(\"%\"))"
+    elseif &filetype == 'octave'
+        exec "VimuxRunCommand(\"clear; octave \" . bufname(\"%\"))"
     endif
 endfunction
 
+" Octave settings
+autocmd BufRead,BufNewFile *.m,*.oct set filetype=octave
+
+" augroup filetypedetect
+"   au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+" augroup END
+
+if has("autocmd") && exists("+omnifunc") 
+   autocmd Filetype octave 
+   \	if &omnifunc == "" | 
+   \	setlocal omnifunc=syntaxcomplete#Complete | 
+   \	endif 
+endif 
