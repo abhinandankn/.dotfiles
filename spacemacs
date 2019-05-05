@@ -56,7 +56,7 @@ This function should only modify configuration layer settings."
              python-formatter 'yapf
              python-format-on-save t
              python-backend 'anaconda
-             python-fill-column 80
+             python-fill-column 79
              python-sort-imports-on-save t)
      (ranger :variables
              ranger-show-preview t
@@ -79,7 +79,9 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+   treemacs
+   )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -490,7 +492,7 @@ before packages are loaded."
                (delete '("\\.pdf\\'" . default) org-file-apps)
                (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
   (setq org-reveal-note-key-char nil)
-  (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+  (setq org-bullets-bullet-list '("■" "▶" "▲" "◆"))
   (setq org-publish-project-alist
         '(("org-notes"
            :base-directory "~/Documents/Org/"
