@@ -363,7 +363,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; (default nil)
    ;; dotspacemacs-line-numbers nil
-   dotspacemacs-line-numbers '(:relative t
+   dotspacemacs-line-numbers '(:t
                                :enabled-for-modes python-mode
                                :size-limit-kb 1000)
 
@@ -492,7 +492,7 @@ before packages are loaded."
                (delete '("\\.pdf\\'" . default) org-file-apps)
                (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
   (setq org-reveal-note-key-char nil)
-  (setq org-bullets-bullet-list '("■" "▶" "▲" "◆"))
+  (setq org-bullets-bullet-list '("■" "▲" "▶""◆"))
   (setq org-publish-project-alist
         '(("org-notes"
            :base-directory "~/Documents/Org/"
