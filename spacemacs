@@ -34,9 +34,14 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     emacs-lisp
+     octave
+     xkcd
+     games
+     javascript
+     spell-checking
      git
      helm
-     ipython-notebook
      syntax-checking
      themes-megapack
      (auto-completion :variables
@@ -75,19 +80,7 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(
-<<<<<<< HEAD
     treemacs
-    emacs-lisp
-=======
->>>>>>> refs/remotes/origin/master
-    octave
-    xkcd
-    games
-    javascript
-    spell-checking
-    treemacs
-    emacs-lisp
-    better-defaults
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
