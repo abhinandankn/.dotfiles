@@ -1,0 +1,86 @@
+{
+    // editor settings
+    "keyboard.dispatch": "keyCode",
+    "editor.fontFamily": "Inconsolata",
+    "editor.fontSize": 17,
+    "editor.fontWeight": "bold",
+    "editor.formatOnSave": true,
+    "files.autoSaveDelay": 1000,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Monokai",
+    "files.autoSave": "afterDelay",
+    "window.menuBarVisibility": "default",
+    "window.titleBarStyle": "custom",
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "editor.largeFileOptimizations": false,
+    "editor.quickSuggestionsDelay": 100,
+    "window.restoreFullscreen": true,
+    // integrated terminal settings
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontWeight": "bold",
+    // debug console settings
+    "debug.console.fontSize": 16,
+    // managing visual studio code settings
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true,
+    "workbench.settings.editor": "json",
+    // zen mode settings
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideTabs": false,
+    // code runner settings
+    "code-runner.enableAppInsights": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.showExecutionMessage": false,
+    // python settings
+    "python.formatting.provider": "yapf",
+    "[python]": {
+        "editor.rulers": [
+            79
+        ],
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.lineNumbers": "on"
+    },
+    // vim settings
+    "vim.leader": "<space>",
+    "vim.easymotion": true,
+    "vim.autoindent": true,
+    "vim.useCtrlKeys": true,
+    // add keys below and set them to false
+    // to let vscode handle the key bindings
+    "vim.handleKeys": {
+        "<C-n>": false,
+        "<C-j>": false,
+        "<C-w>": false,
+        "<C-s>": false,
+        "<C-<enter>>": false,
+    },
+    // vim key bindings
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "s"
+            ],
+            "commands": [
+                "editor.action.formatDocument",
+            ]
+        },
+    ],
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "files.associations": {
+        "*.ipynb": "jupyter"
+    },
+}
