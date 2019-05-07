@@ -34,8 +34,6 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     better-defaults
-     emacs-lisp
      games
      git
      helm
@@ -53,7 +51,7 @@ This function should only modify configuration layer settings."
           org-enable-reveal-js-support t
           org-enable-github-support t)
      (python :variables
-             python-formatter 'yapf
+             python-formatter 'black
              python-format-on-save t
              python-backend 'anaconda
              python-fill-column 79
@@ -79,8 +77,10 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(
-   treemacs
+   dotspacemacs-excluded-packages
+   '(
+    treemacs
+    emacs-lisp
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -182,7 +182,7 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
+   dotspacemacs-startup-lists '((recents . 7)
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
@@ -198,9 +198,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-tomorrow-night
-                         sanityinc-tomorrow-bright
-                         spacemacs-dark
+   dotspacemacs-themes '(doom-molokai
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -492,7 +490,7 @@ before packages are loaded."
                (delete '("\\.pdf\\'" . default) org-file-apps)
                (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
   (setq org-reveal-note-key-char nil)
-  (setq org-bullets-bullet-list '("■" "▲" "▶""◆"))
+  (setq org-bullets-bullet-list '("■" "▲" "▶" "◆"))
   (setq org-publish-project-alist
         '(("org-notes"
            :base-directory "~/Documents/Org/"
